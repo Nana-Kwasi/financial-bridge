@@ -19,19 +19,19 @@ const Footer = () => {
     {
       title: 'Services',
       links: [
-        { name: 'Investment Banking', path: '/services#investment' },
-        { name: 'Asset Management', path: '/services#asset' },
-        { name: 'Corporate Finance', path: '/services#corporate' },
-        { name: 'Risk Management', path: '/services#risk' }
+        { name: 'Investment Banking', path: '/services' },
+        { name: 'Asset Management', path: '/services' },
+        { name: 'Corporate Finance', path: '/services' },
+        { name: 'Risk Management', path: '/services' }
       ]
     },
     {
       title: 'Resources',
       links: [
-        { name: 'Research Reports', path: '/research' },
-        { name: 'Market Analysis', path: '/analysis' },
-        { name: 'Financial Tools', path: '/tools' },
-        { name: 'Educational Content', path: '/education' }
+        { name: 'Research Reports', path: '/resources' },
+        { name: 'Market Analysis', path: '/resources' },
+        { name: 'Financial Tools', path: '/resources' },
+        { name: 'Educational Content', path: '/resources' }
       ]
     },
     {
@@ -46,10 +46,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
+    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
+    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' }
   ];
 
   const contactInfo = [
@@ -58,8 +58,16 @@ const Footer = () => {
     { icon: MapPin, text: '123 Financial District, NY 10001' }
   ];
 
+  const handleLinkClick = (e, path) => {
+    // For external links or non-existent pages, prevent default and show message
+    if (path.startsWith('http') || ['/news', '/leadership', '/resources', '/portal', '/help', '/privacy'].includes(path)) {
+      e.preventDefault();
+      alert('This page is under development. Please contact us for more information.');
+    }
+  };
+
   return (
-    <footer className="bg-gradient-to-br from-secondary-900 to-secondary-800 text-white">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
@@ -124,6 +132,7 @@ const Footer = () => {
                   >
                     <Link
                       to={link.path}
+                      onClick={(e) => handleLinkClick(e, link.path)}
                       className="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm"
                     >
                       {link.name}
@@ -154,6 +163,8 @@ const Footer = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0.8 }}

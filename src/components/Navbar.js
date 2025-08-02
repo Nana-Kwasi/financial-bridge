@@ -60,7 +60,7 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
+          : 'bg-white/90 backdrop-blur-sm shadow-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,7 +91,7 @@ const Navbar = () => {
                     onMouseLeave={() => setActiveDropdown(null)}
                     className="relative"
                   >
-                    <button className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200">
+                    <button className="flex items-center space-x-1 text-gray-800 hover:text-primary-600 font-medium transition-colors duration-200">
                       <span>{item.name}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
@@ -121,8 +121,8 @@ const Navbar = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 ${
-                      location.pathname === item.path ? 'text-primary-600' : ''
+                    className={`text-gray-800 hover:text-primary-600 font-medium transition-colors duration-200 ${
+                      location.pathname === item.path ? 'text-primary-600 font-semibold' : ''
                     }`}
                   >
                     {item.name}
@@ -144,7 +144,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-primary-600 transition-colors duration-200"
+              className="text-gray-800 hover:text-primary-600 transition-colors duration-200"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -169,7 +169,7 @@ const Navbar = () => {
                     <div>
                       <button
                         onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                        className="flex items-center justify-between w-full text-left text-gray-700 hover:text-primary-600 font-medium py-2"
+                        className="flex items-center justify-between w-full text-left text-gray-800 hover:text-primary-600 font-medium py-2"
                       >
                         <span>{item.name}</span>
                         <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
@@ -202,8 +202,8 @@ const Navbar = () => {
                     <Link
                       to={item.path}
                       onClick={() => setIsOpen(false)}
-                      className={`block text-gray-700 hover:text-primary-600 font-medium py-2 ${
-                        location.pathname === item.path ? 'text-primary-600' : ''
+                      className={`block text-gray-800 hover:text-primary-600 font-medium py-2 ${
+                        location.pathname === item.path ? 'text-primary-600 font-semibold' : ''
                       }`}
                     >
                       {item.name}
